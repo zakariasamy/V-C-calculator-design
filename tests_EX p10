@@ -1,0 +1,41 @@
+document.querySelector("#branch-row-size").value = 2
+document.querySelector("#branch-col-size").value = 2
+
+document.querySelector("#link-col-size").value = 2
+
+document.querySelector("#size > input").click()
+
+document.querySelector("#matrix > tr:nth-child(1) > td.branch > input[type=text]:nth-child(1)").value = 1
+document.querySelector("#matrix > tr:nth-child(1) > td.branch > input[type=text]:nth-child(2)").value = 1
+
+document.querySelector("#matrix > tr:nth-child(2) > td.branch > input[type=text]:nth-child(1)").value = 0
+document.querySelector("#matrix > tr:nth-child(2) > td.branch > input[type=text]:nth-child(2)").value = -1
+
+
+
+document.querySelector("#matrix > tr:nth-child(1) > td.link > input[type=text]:nth-child(1)").value = -1
+document.querySelector("#matrix > tr:nth-child(1) > td.link > input[type=text]:nth-child(2)").value = 0
+
+document.querySelector("#matrix > tr:nth-child(2) > td.link > input[type=text]:nth-child(1)").value = 0
+document.querySelector("#matrix > tr:nth-child(2) > td.link > input[type=text]:nth-child(2)").value = 1
+
+
+
+// Enter ZB Values
+document.querySelectorAll(".ZB")[0].value = 5
+document.querySelectorAll(".ZB")[1].value = 10
+document.querySelectorAll(".ZB")[2].value = 5
+document.querySelectorAll(".ZB")[3].value = 5
+
+// Enter EB
+
+document.querySelector("#EB-body > tr:nth-child(1) > td > input").value = 0
+document.querySelector("#EB-body > tr:nth-child(2) > td > input").value = 0
+document.querySelector("#EB-body > tr:nth-child(3) > td > input").value = 10
+document.querySelector("#EB-body > tr:nth-child(4) > td > input").value = 0
+
+// Enter IB
+document.querySelector("#IB-body > tr:nth-child(1) > td > input").value = 0
+document.querySelector("#IB-body > tr:nth-child(2) > td > input").value = 0
+document.querySelector("#IB-body > tr:nth-child(3) > td > input").value = 0
+document.querySelector("#IB-body > tr:nth-child(4) > td > input").value = 0

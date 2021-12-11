@@ -65,10 +65,29 @@
 
 
                     <br>
-                    <input type="submit" onclick="handleMatrixA(event)" value="calculate" name="calculate" class="btn btn-info">
+                    <button onclick="handleMatrixA(event, 'calc_C')" class="btn btn-primary">Calculate C</button>
+                    <button onclick="handleMatrixA(event, 'calc_B')" class="btn btn-primary">Calculate B</button>
+                    <button class="btn btn-dark">Follow with ZB</button>
+                    <button class="btn btn-dark">Follow with YB</button>
+
+
                 </form>
                 <div id="resultField">
-
+                    <h2 id="result-h2">B Matrix</h2>
+                    <table class="table table-bordered">
+                        <tbody id="result-body">
+                            <tr>
+                                <td>55</td>
+                                <td>43</td>
+                                <td>22</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>19</td>
+                                <td>32</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
@@ -79,6 +98,18 @@
 
     <script src="math.js"></script>
     <script type="text/javascript">
+        var arr1 = math.matrix([
+            [1, -0, -0],
+            [1, 1, -0]
+        ])
+        var arr2 = math.matrix([
+            [1, 0],
+            [1, 0]
+        ])
+        console.log(math.concat(arr1, arr2))
+
+
+
         function generateMatrix(e) {
 
             e.preventDefault()
@@ -117,9 +148,9 @@
             document.getElementById("inputField").style.display = "block"
         }
 
-        function handleMatrixA(e) {
+        function handleMatrixA(e, type_of_operation) {
             var branch_col_size = parseInt(document.querySelector('#branch-col-size').value)
-
+            var link_col_size = parseInt(document.querySelector('#link-col-size').value)
             e.preventDefault();
 
             // Generate matrix From Inputs
@@ -132,6 +163,19 @@
                 C_branch,
                 C_link
             } = calculateMatrixC(branchMatrix, linkMatrix, branch_col_size)
+
+            if (type_of_operation == "calc_C") {
+                return printMatrix(C_branch, C_link, "C matrix")
+            }
+            const {
+                B_tree,
+                B_link
+            } = calculateMatrixB(C_link, link_col_size)
+            if (type_of_operation == "calc_B") {
+                return printMatrix(B_tree, B_link, "B matrix")
+            }
+
+            //const ZB_B_Transpose = math.multiply(ZB, linkMatrix)
         }
 
         function calculateMatrixC(branchMatrix, linkMatrix, A_branch_col_size) {
@@ -145,6 +189,40 @@
                 C_branch,
                 C_link
             }
+        }
+
+        function calculateMatrixB(C_link, link_col_size) {
+            const B_branch = math.dotMultiply(math.transpose(C_link), -1)
+
+            // Get B_link
+            const size = link_col_size
+            const B_link = math.identity(size, size)
+
+            console.log("B_branch and Link", B_branch, B_link)
+
+            return {
+                B_tree: B_branch,
+                B_link
+            }
+        }
+
+        function printMatrix(tree, link, h2) {
+            var all_matrix = math.concat(tree, link)._data
+            console.log("All matrix", all_matrix)
+            var body = document.getElementById("result-body")
+            html = ''
+            all_matrix.forEach((arr) => {
+                html += '<tr>'
+                console.log(arr)
+                arr.forEach((number) => {
+                    html += `<td>${number}</td>`
+                    console.log(number)
+                })
+                html += '</tr>'
+            })
+            body.innerHTML = html
+
+            document.getElementById("result-h2").innerHTML = h2
         }
 
         function generateMatrixFromForm() {

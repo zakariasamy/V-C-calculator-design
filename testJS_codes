@@ -1,0 +1,29 @@
+document.querySelector("#branch-row-size").value = 3
+document.querySelector("#branch-col-size").value = 3
+
+document.querySelector("#link-col-size").value = 2
+
+document.querySelector("#size > input").click()
+
+document.querySelector("#matrix > tr:nth-child(1) > td.branch > input[type=text]:nth-child(1)").value = -1
+document.querySelector("#matrix > tr:nth-child(1) > td.branch > input[type=text]:nth-child(2)").value = 1
+document.querySelector("#matrix > tr:nth-child(1) > td.branch > input[type=text]:nth-child(3)").value = 0
+
+document.querySelector("#matrix > tr:nth-child(2) > td.branch > input[type=text]:nth-child(1)").value = 0
+document.querySelector("#matrix > tr:nth-child(2) > td.branch > input[type=text]:nth-child(2)").value = 0
+document.querySelector("#matrix > tr:nth-child(2) > td.branch > input[type=text]:nth-child(3)").value = -1
+
+document.querySelector("#matrix > tr:nth-child(3) > td.branch > input[type=text]:nth-child(1)").value = 1
+document.querySelector("#matrix > tr:nth-child(3) > td.branch > input[type=text]:nth-child(2)").value = 0
+document.querySelector("#matrix > tr:nth-child(3) > td.branch > input[type=text]:nth-child(3)").value = 0
+
+document.querySelector("#matrix > tr:nth-child(1) > td.link > input[type=text]:nth-child(1)").value = 1
+document.querySelector("#matrix > tr:nth-child(1) > td.link > input[type=text]:nth-child(2)").value = 0
+
+document.querySelector("#matrix > tr:nth-child(2) > td.link > input[type=text]:nth-child(1)").value = 0
+document.querySelector("#matrix > tr:nth-child(2) > td.link > input[type=text]:nth-child(2)").value = 0
+
+document.querySelector("#matrix > tr:nth-child(3) > td.link > input[type=text]:nth-child(1)").value = -1
+document.querySelector("#matrix > tr:nth-child(3) > td.link > input[type=text]:nth-child(2)").value = -1
+
+

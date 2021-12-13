@@ -268,19 +268,15 @@
         <div class="container d-flex" style="    justify-content: center;">
             <div class="">
                 <h1 class="text-center">Voltage-Current calculator</h1>
-                <p>Enter the size of the Branch and Links</p>
+                <p>Enter the size including the Branch and Links</p>
                 <form id="size" role="form">
                     <table class="table">
                         <tr>
-                            <th>Branch Size</th>
-                            <th>Link Column Size</th>
+                            <th>[A] Matrix Size</th>
                         </tr>
                         <tr>
-                            <td><input type="text" name="branch-row-size" id="branch-row-size" size="3"> *
-                                <input type="text" name="branch-col-size" id="branch-col-size" size="3"></td>
-                            <td>
-                                <input type="text" name="link-col-size" id="link-col-size" size="3"></td>
-                            </td>
+                            <td><input type="text" name="row-size" id="row-size" size="3"> *
+                                <input type="text" name="col-size" id="col-size" size="3"></td>
                         </tr>
                     </table>
                     <input type="submit" onclick="generateMatrix(event)" class="btn btn-dark w-100" value="generate Matrix">

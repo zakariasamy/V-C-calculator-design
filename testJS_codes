@@ -1,7 +1,6 @@
-document.querySelector("#branch-row-size").value = 3
-document.querySelector("#branch-col-size").value = 3
+document.querySelector("#row-size").value = 4
+document.querySelector("#col-size").value = 5
 
-document.querySelector("#link-col-size").value = 2
 
 document.querySelector("#size > input").click()
 

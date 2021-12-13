@@ -378,12 +378,23 @@ function handleZB(e) {
 
 function generateMatrix(e) {
     e.preventDefault()
-    branch_row_size = parseInt(document.querySelector('#branch-row-size').value)
-    branch_col_size = parseInt(document.querySelector('#branch-col-size').value)
-    link_col_size = parseInt(document.querySelector('#link-col-size').value)
+
+    const row_size = parseInt(document.querySelector('#row-size').value)
+    const col_size = parseInt(document.querySelector('#col-size').value)
+
+
+    link_col_size = col_size - row_size + 1
+    branch_col_size = col_size - link_col_size
+    branch_row_size = row_size - 1
+    console.log("row size", branch_row_size, "b col size", branch_col_size, "link col size", link_col_size)
+        // link_col_size = parseInt(document.querySelector('#link-col-size').value)
 
     if (branch_row_size < 1 || isNaN(branch_row_size) || branch_col_size < 1 || isNaN(branch_col_size) || link_col_size < 1 || isNaN(link_col_size))
-        return;
+        return Swal.fire({
+            icon: 'error',
+            text: 'Please Enter a Valid Size',
+            confirmButtonText: 'Ok'
+        })
 
     let code = ''
 
@@ -417,8 +428,6 @@ function generateMatrix(e) {
 
 // Calculate B And C Matrix
 function handleMatrixA(e, type_of_operation = "") {
-    branch_col_size = parseInt(document.querySelector('#branch-col-size').value)
-    link_col_size = parseInt(document.querySelector('#link-col-size').value)
     e.preventDefault();
 
     try {
@@ -508,9 +517,6 @@ function printMatrix(tree, link, h2) {
 }
 
 function generateMatrixFromForm() {
-    var branch_row_size = parseInt(document.querySelector('#branch-row-size').value)
-    var branch_col_size = parseInt(document.querySelector('#branch-col-size').value)
-    var link_col_size = parseInt(document.querySelector('#link-col-size').value)
 
     let branchMatrix = []
     let linkMatrix = []
